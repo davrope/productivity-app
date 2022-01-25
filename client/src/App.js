@@ -1,5 +1,5 @@
 import React from 'react';
-import {Router, Route, Switch} from 'react-router-dom';
+import {Router, Route, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import * as actions from './actions';
 
@@ -11,7 +11,7 @@ import ProjectDelete from './components/projects/ProjectDelete';
 import ProjectShow from './components/projects/ProjectShow';
 
 import history from './history';
-import StatisticsHome from './components/statistics/StatisticsHome';
+// import StatisticsHome from './components/statistics/StatisticsHome';
 
 class App extends React.Component{
     componentDidMount(){
@@ -24,14 +24,14 @@ class App extends React.Component{
                 <Router history = {history}>
                     <div className= "container">
                         <Header/>
-                        <Switch>
-                            <Route exact path = "/" component = {Landing}/>
-                            <Route exact path = "/projects" component = {Dashboard} />
-                            <Route path = "/projects/new" component={ProjectNew}/>
-                            <Route path = "/projects/delete/:id" exact component = {ProjectDelete}/>
-                            <Route path = "/projects/:id" exact component = {ProjectShow}/>
-                            <Route path = "/myStatistics" exact component = {StatisticsHome}/>
-                        </Switch>                      
+                        <Route>
+                            <Route exact path = "/" element = {<Landing/>}/>
+                            <Route exact path = "/projects" element = {<Dashboard/>} />
+                            <Route path = "/projects/new" element={<ProjectNew/>}/>
+                            <Route path = "/projects/delete/:id" exact element = {<ProjectDelete/>}/>
+                            <Route path = "/projects/:id" exact element = {<ProjectShow/>}/>
+                            
+                        </Route>                      
                     </div> 
                 </Router>
             </div>
