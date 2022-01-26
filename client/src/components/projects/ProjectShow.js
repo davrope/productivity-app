@@ -96,7 +96,7 @@ class ProjectShow extends React.Component{
 
                 </div>
 
-                <button className = "ui button" onClick = {()=>console.log(this.props.match.params.id, this.props.timeReducer, this.props.todos)}>
+                {/* <button className = "ui button" onClick = {()=>console.log(this.props.match.params.id, this.props.timeReducer, this.props.todos)}>
                     Test Save project
                 </button>
 
@@ -106,7 +106,7 @@ class ProjectShow extends React.Component{
 
                 <button className = "ui button" onClick = {()=>(this.totalTime())}>
                     Test Total Time
-                </button>
+                </button> */}
 
             </div>
         );
