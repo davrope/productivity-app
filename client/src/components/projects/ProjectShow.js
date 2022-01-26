@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {fetchProject, saveTime, fetchTodos} from '../../actions';
-import {withRouter} from 'react-router';
+import { WithRouter } from '../withRouter';
 import Timer from '../Timer';
 import TodoApp from '../../todos/todosComponents/TodoApp';
 import _ from 'lodash';
@@ -121,6 +121,6 @@ const mapStateToProps = (state)=>{
         };
 }
 
-export default connect(mapStateToProps, {fetchProject, saveTime, fetchTodos})(withRouter(ProjectShow));
+export default connect(mapStateToProps, {fetchProject, saveTime, fetchTodos})(WithRouter(ProjectShow));
 
 

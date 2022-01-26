@@ -1,5 +1,5 @@
 import React from 'react';
-import {Router, Route, Route} from 'react-router-dom';
+import {Router, Route, Routes} from 'react-router-dom';
 import {connect} from 'react-redux';
 import * as actions from './actions';
 
@@ -24,14 +24,14 @@ class App extends React.Component{
                 <Router history = {history}>
                     <div className= "container">
                         <Header/>
-                        <Route>
+                        <Routes>
                             <Route exact path = "/" element = {<Landing/>}/>
                             <Route exact path = "/projects" element = {<Dashboard/>} />
                             <Route path = "/projects/new" element={<ProjectNew/>}/>
                             <Route path = "/projects/delete/:id" exact element = {<ProjectDelete/>}/>
                             <Route path = "/projects/:id" exact element = {<ProjectShow/>}/>
                             
-                        </Route>                      
+                        </Routes>                      
                     </div> 
                 </Router>
             </div>
