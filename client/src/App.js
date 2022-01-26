@@ -1,5 +1,5 @@
 import React from 'react';
-import {Router, Route, Routes} from 'react-router-dom';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import {connect} from 'react-redux';
 import * as actions from './actions';
 
@@ -21,19 +21,19 @@ class App extends React.Component{
     render(){
         return(
             <div>
-                <Router history = {history}>
+                <BrowserRouter history = {history}>
                     <div className= "container">
                         <Header/>
                         <Routes>
-                            <Route exact path = "/" element = {<Landing/>}/>
-                            <Route exact path = "/projects" element = {<Dashboard/>} />
+                            <Route path = "/" element = {<Landing/>}/>
+                            <Route path = "/projects" element = {<Dashboard/>} />
                             <Route path = "/projects/new" element={<ProjectNew/>}/>
                             <Route path = "/projects/delete/:id" exact element = {<ProjectDelete/>}/>
                             <Route path = "/projects/:id" exact element = {<ProjectShow/>}/>
                             
                         </Routes>                      
                     </div> 
-                </Router>
+                </BrowserRouter>
             </div>
             
         );
