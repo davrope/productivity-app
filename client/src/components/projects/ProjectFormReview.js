@@ -3,12 +3,19 @@ import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 import formFields from './formFields';
-// import { withRouter } from 'react-router-dom'; deprecated in v6
-import { WithRouter } from '../withRouter';
+import { withRouter } from 'react-router-dom'; 
+// deprecated in v6
+// import { WithRouter } from '../withRouter';
 import * as actions from '../../actions';
 import history from '../../history';
+// import { useNavigate } from 'react-router-dom';
+
+
+
 
 const ProjectFormReview = ({ onCancel, formValues, submitProject }) => {
+  
+
   const reviewFields = _.map(formFields, ({ name, label }) => {
     return (
       <div className = "ui list" key={name}>
@@ -22,6 +29,8 @@ const ProjectFormReview = ({ onCancel, formValues, submitProject }) => {
 
   const SubmitProjectValues = (formValues, history)=>{
     submitProject(formValues);
+
+
     history.push('/projects');
   }
 
@@ -50,4 +59,4 @@ function mapStateToProps(state) {
   return { formValues: state.form.projectForm.values };
 }
 
-export default connect(mapStateToProps, actions)(WithRouter(ProjectFormReview));
+export default connect(mapStateToProps, actions)(withRouter(ProjectFormReview));

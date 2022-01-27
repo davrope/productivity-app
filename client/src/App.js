@@ -1,5 +1,6 @@
 import React from 'react';
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
+// import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import {Router, Route, Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
 import * as actions from './actions';
 
@@ -21,23 +22,52 @@ class App extends React.Component{
     render(){
         return(
             <div>
-                <BrowserRouter history = {history}>
+                <Router history = {history}>
                     <div className= "container">
                         <Header/>
-                        <Routes>
-                            <Route path = "/" element = {<Landing/>}/>
-                            <Route path = "/projects" element = {<Dashboard/>} />
-                            <Route path = "/projects/new" element={<ProjectNew/>}/>
-                            <Route path = "/projects/delete/:id" exact element = {<ProjectDelete/>}/>
-                            <Route path = "/projects/:id" exact element = {<ProjectShow/>}/>
+                        <Switch>
+                            <Route exact path = "/" component = {Landing}/>
+                            <Route exact path = "/projects" component = {Dashboard} />
+                            <Route path = "/projects/new" component={ProjectNew}/>
+                            <Route path = "/projects/delete/:id" exact component = {ProjectDelete}/>
+                            <Route path = "/projects/:id" exact component = {ProjectShow}/>
                             
-                        </Routes>                      
+                        </Switch>                      
                     </div> 
-                </BrowserRouter>
+                </Router>
             </div>
             
         );
     }
 }
+
+// For react router v6 : ***************************************************
+
+// class App extends React.Component{
+//     componentDidMount(){
+//         this.props.fetchUser();
+//     }
+
+//     render(){
+//         return(
+//             <div>
+//                 <BrowserRouter history = {history}>
+//                     <div className= "container">
+//                         <Header/>
+//                         <Routes>
+//                             <Route path = "/" element = {<Landing/>}/>
+//                             <Route path = "/projects" element = {<Dashboard/>} />
+//                             <Route path = "/projects/new" element={<ProjectNew/>}/>
+//                             <Route path = "/projects/delete/:id" exact element = {<ProjectDelete/>}/>
+//                             <Route path = "/projects/:id" exact element = {<ProjectShow/>}/>
+                            
+//                         </Routes>                      
+//                     </div> 
+//                 </BrowserRouter>
+//             </div>
+            
+//         );
+//     }
+// }
 
 export default connect(null, actions)(App);
