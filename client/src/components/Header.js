@@ -8,21 +8,23 @@ import styled from 'styled-components'
 
 
 class Header extends React.Component{
+
+
     renderContent(){
         switch(this.props.auth){
             case null:
                 return;
             case false:
                     return (
-                      <a className = "google log in" style={{alignItems:'center'}} href = "/auth/google" key = "googlelogin"> 
+                      <NavLinkS className = "google log in" href = "/auth/google" key = "googlelogin"> 
                       {/* //<a  style={{alignItems:'center'}} href = "/auth/google" key = "googlelogin">  */}
                         <i className = "google icon"></i>
                         Login with Google
-                      </a>
+                      </NavLinkS>
                       );
             default:
                 return[
-                    <a className = "sign-out" style={{alignItems:'center'}} href = "/api/logout" key = "signout"> <i className = "sign-out icon"></i>Logout</a>
+                    <NavLinkS className = "sign-out" href = "/api/logout" key = "signout"> <i className = "sign-out icon"></i>Logout</NavLinkS>
                 ];
         }
     }
@@ -91,10 +93,10 @@ class Header extends React.Component{
               </NavItem>
 
 
-              <NavItem>
-                <NavButton>
+              <NavItem style={{alignItems:'bottom'}}>
+                <div style={{height:'100%'}}>
                   {this.renderContent()}
-                </NavButton>
+                </div>
               </NavItem>
             </NavMenu>
 
@@ -238,6 +240,13 @@ const NavLinkS = styled.a`
 function mapStateToProps({ auth }) {
     return { auth };
   }
+
+// function mapStateToProps(state) {
+//     return { 
+//       auth: state.auth,
+//       toggle: state.toggle
+//     };
+//   }
   
 
 export default connect(mapStateToProps)(Header);
