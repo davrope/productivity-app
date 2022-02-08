@@ -8,16 +8,28 @@ import {FaTimes} from 'react-icons/fa'
 import styled from 'styled-components'
 
 
+
 class Header extends React.Component{
+  constructor(props){
+    super(props)
+    this.state = {
+
+      isOpen: false
+    }
+  }
+  
+
+  toggle = ()=>{
+    this.setState({isOpen:!this.state.isOpen})
+    console.log(this.state)
+  }
+
+
 
     renderContent(){
+      console.log(this.state)
+      console.log(this.props)
         switch(this.props.auth){
-            case null:
-                return(
-                  <div>
-                    Jeje algo salió mal
-                  </div>
-                );
             case false:
                     return (
                       <NavLinkS className = "google log in" href = "/auth/google" key = "googlelogin"> 
@@ -33,79 +45,82 @@ class Header extends React.Component{
         }
     }
 
-    // render() {
-    //     return (
-    //       <Nav>
-    //         <div className = "ui attached stackable menu">
-    //           <div className = "ui container">
-    //             <a className = "item" href= "/" key = "home button">
-    //               <i className = "home icon"></i>
-    //               Home
-    //             </a>
-    //             <a className = "item" href= {this.props.auth ? '/projects' : '/'} key = "projects button">
-    //               <i className = "archive icon"></i>
-    //               Projects
-    //             </a>
-
-    //             <div className = "right item">
-    //               <div>
-    //                 <a className = "ui button" href = "/projects/new" style = {{color:'white', backgroundColor: '#21ADA8'}} key = "new project">
-    //                   <i className = "add icon"></i>
-    //                   New Project
-    //                 </a>
-    //               </div>
-
-                  
-
-    //               <button className="ui right floated button">
-    //                   {this.renderContent()}
-    //               </button>
-    //             </div>
-    //           </div>
-    //         </div>
-    //       </Nav>
-    //     );
-    //   }
 
     render(){
       return(
-        <Nav>
-          <NavbarContainer>
-            <NavLogo href = "/" key = "home button">
-              <i className='home icon'></i>
-            </NavLogo>
+        <div>
 
-            {/* <MobileIcon onClick={this.handleToggle()}>
-            {/* <MobileIcon onClick={toggle}> */}
-                {/* <FaBars/>
-            </MobileIcon> */}
-            <NavMenu>
-              <NavItem>
-                <NavLinkS className = "item" href= {this.props.auth ? '/projects' : '/'} key = "projects button">
-                  <i className = "archive icon"></i>
-                  Projects
-                </NavLinkS>
-              </NavItem>
+        <SidebarContainer isOpen = {this.state.isOpen} onClick={this.toggle}>
+            <SidebarWrapper>
+                <SidebarMenu>
+                    <SidebarLink className = "item" href= {this.props.auth ? '/projects' : '/'} key = "projects button">
+                        Projects
+                    </SidebarLink>
+                    <SidebarLink className = "item" href = "/projects/new"  key = "new project">
+                        New Project
+                    </SidebarLink>
+                </SidebarMenu>
 
-              <NavItem>
-                <NavLinkS className = "item" href = "/projects/new"  key = "new project">
-                    <i className = "add icon"></i>
-                    New Project
+                <Icon onClick={this.toggle} className="icon-container">
+                    <CloseIcon/>
+                </Icon>
+            </SidebarWrapper>
+        </SidebarContainer>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+          <Nav>
+            <NavbarContainer>
+              <NavLogo href = "/" key = "home button">
+                <i className='home icon'></i>
+              </NavLogo>
+
+              <MobileIcon onClick={this.toggle}>
+              <FaBars/>
+              </MobileIcon>
+
+              <NavMenu>
+                <NavItem>
+                  <NavLinkS className = "item" href= {this.props.auth ? '/projects' : '/'} key = "projects button">
+                    <i className = "archive icon"></i>
+                    Projects
                   </NavLinkS>
-              </NavItem>
+                </NavItem>
+
+                <NavItem>
+                  <NavLinkS className = "item" href = "/projects/new"  key = "new project">
+                      <i className = "add icon"></i>
+                      New Project
+                    </NavLinkS>
+                </NavItem>
 
 
-              <NavItem style={{alignItems:'bottom'}}>
-                <div style={{height:'100%'}}>
-                  {this.renderContent()}
-                </div>
-              </NavItem>
-            </NavMenu>
+                <NavItem style={{alignItems:'bottom'}}>
+                  <div style={{height:'100%'}}>
+                    {this.renderContent()}
+                  </div>
+                </NavItem>
+              </NavMenu>
 
 
 
-          </NavbarContainer>
-        </Nav>
+            </NavbarContainer>
+          </Nav>
+        </div>
       )
     }
 }
@@ -262,10 +277,13 @@ const NavLinkS = styled.a`
 // `
 const CloseIcon = styled(FaTimes)`
     color: #fff;
+    text-align:center;
+    display: block;
+    width: 100%;
 `
 
 const Icon = styled.div`
-    position: absolute;
+    /* position: absolute; */
     top: 1.2 rem;
     right: 1.5 rem;
     background: transparent;
@@ -277,18 +295,10 @@ const Icon = styled.div`
 
 const SidebarWrapper = styled.div`
     color: #fff;
+    text-align:center
 
 `
-// const SidebarMenu = styled.div`
-//     position: absolute;
-//     top: 1.2rem;
-//     right: 1.5rem;
-//     background: transparent;
-//     font-size: 2rem;
-//     cursor:pointer;
-//     outline: none;
 
-// `
 
 
 const SidebarMenu = styled.ul`
@@ -296,9 +306,12 @@ const SidebarMenu = styled.ul`
     grid-template-columns: 1fr;
     grid-template-rows: repeat(6, 80px);
     text-align: center;
+    padding-left:0;
 
     @media screen and (max-width: 480px){
-        grid-template-rows: repeat(6, 60px);
+        
+        grid-template-rows: repeate(6, 60px):
+        
     }
 `
 
@@ -309,7 +322,9 @@ const SidebarLink = styled.a`
     justify-content: center;
     font-size: 1.5rem;
     text-decoration: none;
-    list-style: none;
+    list-style-type: none;
+    padding:0;
+    margin:0;
     transition: 0.2s ease-in-out;
     text-decoration: none;
     color: #fff;
@@ -326,12 +341,22 @@ function mapStateToProps({ auth }) {
     return { auth };
   }
 
-// function mapStateToProps(state) {
-//     return { 
-//       auth: state.auth,
-//       toggle: state.toggle
-//     };
-//   }
-  
+
+const SidebarContainer = styled.aside`
+    position: fixed;
+    z-index:999;
+    width: 100%;
+    height: 100%;
+    background: #0d0d0d;
+    display: grid;
+    align-items: center;
+    top: 0;
+    left: 0;
+    transition: 0.3s ease-in-out;
+    opacity: ${({isOpen})=>(isOpen ? '100%': '0')} ;
+    top:${({isOpen})=>(isOpen ? '0%': '-100%')} ;
+
+`
+
 
 export default connect(mapStateToProps)(Header);
