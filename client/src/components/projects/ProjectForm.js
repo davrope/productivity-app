@@ -6,6 +6,9 @@ import { Link } from 'react-router-dom';
 import ProjectField from './ProjectField';
 // import validateEmails from '../../utils/validateEmails';
 import formFields from './formFields';
+import  '../../styles/form.css'
+// import { FaCentercode } from 'react-icons/fa';
+// import { text } from 'body-parser';
 
 class ProjectForm extends Component {
   renderFields() {
@@ -24,17 +27,19 @@ class ProjectForm extends Component {
 
   render() {
     return (
-      <div className = "ui form" >
-        <form onSubmit={this.props.handleSubmit(this.props.onProjectSubmit)}>
-          {this.renderFields()}
-          <Link to="/projects" className="ui red button">
-            Cancel
-          </Link>
-          <button type="submit" className="ui teal button">
-            Next
-            <i className="arrow right icon"></i>
-          </button>
-        </form>
+      <div style={{textAlign:'center', maxWidth:'70%', margin:'auto' }}>
+        <div className = "ui form" >
+          <form onSubmit={this.props.handleSubmit(this.props.onProjectSubmit)}>
+            {this.renderFields()}
+            <Link to="/projects" className="ui red button">
+              Cancel
+            </Link>
+            <button type="submit" className="ui teal button">
+              Next
+              <i className="arrow right icon"></i>
+            </button>
+          </form>
+        </div>
       </div>
     );
   }
@@ -57,3 +62,5 @@ export default reduxForm({
   form: 'projectForm',
   destroyOnUnmount: false
 })(ProjectForm);
+
+

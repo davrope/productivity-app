@@ -1,0 +1,93 @@
+*{
+    justify-content: center;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+input[type="text"], select, textarea{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    resize:vertical
+}
+
+label{
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+}
+
+button[type=submit]{
+    background-color: teal;
+    color:white;
+    padding: 12px 20px;
+    border:none;
+    border-radius: 40px;
+    cursor: pointer;
+    /* float:inline-start */
+    /* position: relative;
+    justify-self: center; */
+}
+
+.cancel-button{
+    background-color: red;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius:40px;
+    cursor: pointer;
+    margin-top: 12px;
+}
+
+button[type=submit]:hover{
+    background-color: blueviolet;
+}
+
+.form-container{
+    border-radius: 5px;
+    background: #f2f2f2;
+    padding:10px;
+    max-width: 1000px;
+}
+
+.col-25{
+    float:left;
+    width: 25%;
+    margin-top: 5px;
+}
+
+.col-75{
+    float:left;
+    width: 75%;
+    margin-top:5px;
+}
+
+/* .row::after{
+    content: "";
+    display: table;
+    clear:both;
+} */
+
+
+@media screen and (max-width:600px){
+    .col-25, .col-75{
+        width: 100%;
+        margin-top: 0;
+    }
+}
+
+
+
+
+.row-buttons{
+    margin:auto;
+    width: 100%;
+    text-align: center;
+}
+
+.div-form{
+    text-align: center;
+    max-width: 70%;
+    margin:auto
+}
+
