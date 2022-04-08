@@ -24,6 +24,7 @@ class App extends React.Component{
         return(
             <div>
                 <Router history = {history}>
+               
                     <div className= "container">
                         <Header/>
                         <Switch>

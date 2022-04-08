@@ -23,7 +23,7 @@ class ProjectsList extends React.Component{
                             <i className = "trash icon" style = {{position:'absolute', top: '20px', right:'5px'}}></i>
                         </Link>
                         
-                        <Link to to={`/projects/${project._id}`}>
+                        <Link  to={`/projects/${project._id}`}>
                             <h2 className = "ui top attached header">{project.title} </h2>
                         </Link>
                         

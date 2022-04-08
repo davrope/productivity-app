@@ -21,14 +21,14 @@ class Header extends React.Component{
 
   toggle = ()=>{
     this.setState({isOpen:!this.state.isOpen})
-    console.log(this.state)
+    
   }
 
 
 
     renderContent(){
-      console.log(this.state)
-      console.log(this.props)
+      
+
         switch(this.props.auth){
             case false:
                     return (
@@ -210,34 +210,34 @@ const NavItem = styled.li`
 
 `
 
-const NavButton = styled.button`
-    /* display: flex;
-    align-items: center;
-    justify-content: center;
+// const NavButton = styled.button`
+//     /* display: flex;
+//     align-items: center;
+//     justify-content: center;
 
-    @media screen and (max-width: 768px){
-        display: none;
+//     @media screen and (max-width: 768px){
+//         display: none;
 
-    } */
+//     } */
 
-    /* color: #f7f7f2; */
-    background-color: #000;
-    border-color: #000;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    padding: 0 1rem;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    outline: none;
+//     /* color: #f7f7f2; */
+//     background-color: #000;
+//     border-color: #000;
+//     display: flex;
+//     align-items: center;
+//     text-decoration: none;
+//     padding: 0 1rem;
+//     width: 100%;
+//     height: 100%;
+//     cursor: pointer;
+//     outline: none;
     
 
-    &.active{
-        border-bottom: 3px solid #00A3A3;
-    }
+//     &.active{
+//         border-bottom: 3px solid #00A3A3;
+//     }
 
-`
+// `
 
 
 
@@ -295,7 +295,7 @@ const Icon = styled.div`
 
 const SidebarWrapper = styled.div`
     color: #fff;
-    text-align:center
+    text-align:center;
 
 `
 
@@ -310,7 +310,7 @@ const SidebarMenu = styled.ul`
 
     @media screen and (max-width: 480px){
         
-        grid-template-rows: repeate(6, 60px):
+        grid-template-rows: repeate(6, 60px);
         
     }
 `

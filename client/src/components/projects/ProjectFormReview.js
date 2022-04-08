@@ -35,7 +35,7 @@ const ProjectFormReview = ({ onCancel, formValues, submitProject }) => {
   }
 
   return (
-    <div>
+    <div style={{marginLeft: 'auto', marginRight: 'auto', textAlign: 'center'}}>
       <h2 className = "ui header">Please confirm your entries</h2>
       {reviewFields}
       <button
