@@ -40,7 +40,9 @@ class Header extends React.Component{
                       );
             default:
                 return[
-                    <NavLinkS className = "sign-out" href = "/api/logout" key = "signout"> <i className = "sign-out icon"></i>Logout</NavLinkS>
+                    <NavLinkS className = "sign-out" href = "/api/logout" key = "signout"> <i className = "sign-out icon"></i>
+                      <p style={{paddingTop:'6px'}}>Logout</p>
+                    </NavLinkS>
                 ];
         }
     }
@@ -56,9 +58,12 @@ class Header extends React.Component{
                     <SidebarLink className = "item" href= {this.props.auth ? '/projects' : '/'} key = "projects button">
                         Projects
                     </SidebarLink>
-                    <SidebarLink className = "item" href = "/projects/new"  key = "new project">
+                    <SidebarLink className = "item" href = {this.props.auth ? '/projects/new' : '/' }  key = "new project">
                         New Project
                     </SidebarLink>
+                    <NavLinkS className='item' href= {this.props.auth ? '/api/logout': '/auth/google'}  key= "auth">
+                      {this.props.auth ? <SidebarLink>Logout</SidebarLink> : <SidebarLink>Login with Google</SidebarLink>}
+                    </NavLinkS>
                 </SidebarMenu>
 
                 <Icon onClick={this.toggle} className="icon-container">
@@ -96,15 +101,15 @@ class Header extends React.Component{
               <NavMenu>
                 <NavItem>
                   <NavLinkS className = "item" href= {this.props.auth ? '/projects' : '/'} key = "projects button">
-                    <i className = "archive icon"></i>
-                    Projects
+                    <i className = "archive icon"/>
+                    <p style={{paddingTop:'6px'}}>Projects</p>
                   </NavLinkS>
                 </NavItem>
 
                 <NavItem>
-                  <NavLinkS className = "item" href = "/projects/new"  key = "new project">
+                  <NavLinkS className = "item" href = {this.props.auth ? '/projects/new' : '/' }  key = "new project">
                       <i className = "add icon"></i>
-                      New Project
+                      <p style={{paddingTop:'6px'}}>New Project</p>
                     </NavLinkS>
                 </NavItem>
 

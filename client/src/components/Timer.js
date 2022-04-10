@@ -51,7 +51,7 @@ class Timer extends React.Component {
     render() {    
         
         let start = (this.state.time === 0) ?
-            <button onClick={this.startTimer} className ="ui teal button">Start</button> :
+            <button onClick={this.startTimer} className ="ui teal button" style={{backgroundColor:'#0fd27a'}}>Start</button> :
             null    
         let stop = (this.state.time === 0 || !this.state.isOn) ?
             null :
